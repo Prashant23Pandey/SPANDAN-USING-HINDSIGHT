@@ -1,3 +1,1 @@
-# SPANDAN
-
-
+# SPANDAN (Using Hindsight)
