@@ -55,6 +55,7 @@
           <p class="view-description">High-risk obstetric triage, continuous BLE band bio-signals, tele-consultation hub, and digital prescription issuance.</p>
         </div>
         <div class="view-actions-group">
+          <a href="../../dashboard/ai_memory_insights.php" class="btn-core btn-secondary" style="border-color:rgba(6,182,212,0.4); color:#06B6D4; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">🧠 Hindsight AI Insights</a>
           <button class="btn-core btn-secondary" id="btnOpenEHRDrawer">📂 Open Full EHR</button>
           <button class="btn-core btn-primary-role" style="--role-color:var(--c-doctor);" id="btnLaunchTeleconsult">📹 Start Tele-Consult</button>
         </div>

@@ -718,46 +718,78 @@ function renderDashboardContent() {
     if (dashHeroCountdown) dashHeroCountdown.textContent = t.daysLeft;
     if (dashHeroHeading) dashHeroHeading.textContent = t.babyDevelopmentTitle;
     if (dashHeroText) dashHeroText.textContent = t.babyDevelopmentDesc;
-    if (dashFruitEmoji) dashFruitEmoji.textContent = '🍆';
+    if (dashFruitEmoji) { dashFruitEmoji.textContent = ''; dashFruitEmoji.style.display = 'none'; }
     if (dashFruitLabel) dashFruitLabel.textContent = t.fruitLabel;
     if (dashFruitStats) dashFruitStats.textContent = '~600 grams • 30 cm';
 
     if (dashToolsGrid) {
       dashToolsGrid.innerHTML = `
         <div class="web-tool-card tool-kick" id="btnToolKick">
-          <div>
-            <div class="web-tool-icon">🦶</div>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
+            <span class="tool-status-badge active">Live Tracker</span>
+          </div>
+          <div class="tool-card-body">
             <h4>${t.kickCounter}</h4>
             <p id="kickCountWebsiteLabel">${appState.kickCount} kicks recorded today</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #BE185D; margin-top: 8px;">+ Tap to Log Kick</span>
+          <button type="button" class="tool-quick-action">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Log Kick</span>
+          </button>
         </div>
 
         <div class="web-tool-card tool-water" id="btnToolWater">
-          <div>
-            <div class="web-tool-icon">💧</div>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </div>
+            <span class="tool-status-badge hydration">Goal: 8 Glasses</span>
+          </div>
+          <div class="tool-card-body">
             <h4>${t.waterTracker}</h4>
             <p id="waterCountWebsiteLabel">${appState.waterCount} / 8 glasses logged</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #0284C7; margin-top: 8px;">+ Tap to Add Glass</span>
+          <button type="button" class="tool-quick-action">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Glass (250ml)</span>
+          </button>
         </div>
 
-        <div class="web-tool-card tool-symptom">
-          <div>
-            <div class="web-tool-icon">📋</div>
-            <h4>${t.symptomLogger}</h4>
-            <p>${t.symptomLoggerDesc}</p>
+        <div class="web-tool-card tool-symptom" id="btnOpenSymptoms">
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="m9 14 2 2 4-4"></path></svg>
+            </div>
+            <span class="tool-status-badge logged">Logged Today</span>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #B45309; margin-top: 8px;">View Journal →</span>
+          <div class="tool-card-body">
+            <h4>${t.symptomLogger}</h4>
+            <p id="symptomStatusLabel">${t.symptomLoggerDesc}</p>
+          </div>
+          <button type="button" class="tool-quick-action action-secondary">
+            <span>Review Journal</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
 
-        <div class="web-tool-card tool-partner">
-          <div>
-            <div class="web-tool-icon">💬</div>
+        <div class="web-tool-card tool-partner" id="btnOpenPartnerSync">
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <span class="tool-status-badge synced">Device Synced</span>
+          </div>
+          <div class="tool-card-body">
             <h4>${t.partnerSync}</h4>
             <p>${t.partnerSyncDesc}</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #6D28D9; margin-top: 8px;">Sync Shared Notes →</span>
+          <button type="button" class="tool-quick-action action-secondary">
+            <span>Sync Shared Notes</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
       `;
     }
@@ -766,46 +798,78 @@ function renderDashboardContent() {
     if (dashHeroCountdown) dashHeroCountdown.textContent = 'Next Vaccine in 14 Days';
     if (dashHeroHeading) dashHeroHeading.textContent = t.motherTitle;
     if (dashHeroText) dashHeroText.textContent = t.motherDesc;
-    if (dashFruitEmoji) dashFruitEmoji.textContent = '👶';
+    if (dashFruitEmoji) { dashFruitEmoji.textContent = ''; dashFruitEmoji.style.display = 'none'; }
     if (dashFruitLabel) dashFruitLabel.textContent = 'Baby Liam (3 Mo)';
     if (dashFruitStats) dashFruitStats.textContent = '6.2 kg • 61 cm';
 
     if (dashToolsGrid) {
       dashToolsGrid.innerHTML = `
         <div class="web-tool-card tool-kick">
-          <div>
-            <div class="web-tool-icon">🍼</div>
-            <h4>Feeding & Nursing Log</h4>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <span class="tool-status-badge active">Nursing Live</span>
+          </div>
+          <div class="tool-card-body">
+            <h4>Feeding &amp; Nursing Log</h4>
             <p>Last nursing 1h 45m ago (Left side)</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #BE185D; margin-top: 8px;">+ Log Feeding</span>
+          <button type="button" class="tool-quick-action">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Log Feeding</span>
+          </button>
         </div>
 
         <div class="web-tool-card tool-water">
-          <div>
-            <div class="web-tool-icon">💤</div>
-            <h4>Sleep & Nap Tracker</h4>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </div>
+            <span class="tool-status-badge hydration">Target 12h</span>
+          </div>
+          <div class="tool-card-body">
+            <h4>Sleep &amp; Nap Tracker</h4>
             <p>11.5 hours total sleep today</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #0284C7; margin-top: 8px;">+ Log Nap</span>
+          <button type="button" class="tool-quick-action">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Log Nap</span>
+          </button>
         </div>
 
         <div class="web-tool-card tool-symptom">
-          <div>
-            <div class="web-tool-icon">💉</div>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="2" x2="22" y2="6"></line><path d="m7.5 4.21 4.3 4.3-5.3 5.3c-.6.6-1.5.6-2.1 0l-2.2-2.2c-.6-.6-.6-1.5 0-2.1l5.3-5.3Z"></path><path d="m15.5 12.21 3.3 3.3-1.4 1.4-3.3-3.3"></path><line x1="18.5" y1="9.21" x2="21.5" y2="12.21"></line></svg>
+            </div>
+            <span class="tool-status-badge logged">DTP Booster</span>
+          </div>
+          <div class="tool-card-body">
             <h4>Vaccination Schedule</h4>
             <p>DTP Booster due in 2 weeks</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #B45309; margin-top: 8px;">View Calendar →</span>
+          <button type="button" class="tool-quick-action action-secondary">
+            <span>View Calendar</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
 
         <div class="web-tool-card tool-partner">
-          <div>
-            <div class="web-tool-icon">⭐</div>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <span class="tool-status-badge synced">5/6 Passed</span>
+          </div>
+          <div class="tool-card-body">
             <h4>Development Milestones</h4>
             <p>5 of 6 cognitive checks passed</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #6D28D9; margin-top: 8px;">Milestone Checklist →</span>
+          <button type="button" class="tool-quick-action action-secondary">
+            <span>Milestone Checklist</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
       `;
     }
@@ -815,46 +879,78 @@ function renderDashboardContent() {
     if (dashHeroCountdown) dashHeroCountdown.textContent = 'Family Care Active';
     if (dashHeroHeading) dashHeroHeading.textContent = t.alreadyTitle;
     if (dashHeroText) dashHeroText.textContent = t.alreadyDesc;
-    if (dashFruitEmoji) dashFruitEmoji.textContent = '👨‍👩‍👧';
+    if (dashFruitEmoji) { dashFruitEmoji.textContent = ''; dashFruitEmoji.style.display = 'none'; }
     if (dashFruitLabel) dashFruitLabel.textContent = 'Growing Family';
     if (dashFruitStats) dashFruitStats.textContent = '2 Kids • Toddler & Infant';
 
     if (dashToolsGrid) {
       dashToolsGrid.innerHTML = `
         <div class="web-tool-card tool-kick">
-          <div>
-            <div class="web-tool-icon">🧩</div>
-            <h4>Sibling Bonding Activities</h4>
-            <p>Creative play & shared storytime</p>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"></circle><path d="M17 11a3 3 0 1 0-2.8-4"></path><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path><path d="M16 21v-2a3.5 3.5 0 0 0-3-3.4"></path></svg>
+            </div>
+            <span class="tool-status-badge active">15+ Ideas</span>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #BE185D; margin-top: 8px;">Explore 15+ Ideas →</span>
+          <div class="tool-card-body">
+            <h4>Sibling Bonding Activities</h4>
+            <p>Creative play &amp; shared storytime</p>
+          </div>
+          <button type="button" class="tool-quick-action">
+            <span>Explore Ideas</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
 
         <div class="web-tool-card tool-water">
-          <div>
-            <div class="web-tool-icon">🥗</div>
-            <h4>Toddler & Family Meals</h4>
-            <p>Balanced weekly recipes & snack guide</p>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+            </div>
+            <span class="tool-status-badge hydration">Weekly Guide</span>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #0284C7; margin-top: 8px;">Meal Planner →</span>
+          <div class="tool-card-body">
+            <h4>Toddler &amp; Family Meals</h4>
+            <p>Balanced weekly recipes &amp; snack guide</p>
+          </div>
+          <button type="button" class="tool-quick-action">
+            <span>Meal Planner</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
 
         <div class="web-tool-card tool-symptom">
-          <div>
-            <div class="web-tool-icon">📚</div>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <span class="tool-status-badge logged">Audio Player</span>
+          </div>
+          <div class="tool-card-body">
             <h4>Bedtime Stories</h4>
             <p>Audio stories and calming sleep sounds</p>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #B45309; margin-top: 8px;">Play Story →</span>
+          <button type="button" class="tool-quick-action action-secondary">
+            <span>Play Story</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
 
         <div class="web-tool-card tool-partner">
-          <div>
-            <div class="web-tool-icon">📅</div>
-            <h4>Family Routine Calendar</h4>
-            <p>Pediatric visits, school sync & playdates</p>
+          <div class="tool-card-head">
+            <div class="web-tool-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <span class="tool-status-badge synced">Calendar Sync</span>
           </div>
-          <span style="font-size: 11px; font-weight: 700; color: #6D28D9; margin-top: 8px;">Open Calendar →</span>
+          <div class="tool-card-body">
+            <h4>Family Routine Calendar</h4>
+            <p>Pediatric visits, school sync &amp; playdates</p>
+          </div>
+          <button type="button" class="tool-quick-action action-secondary">
+            <span>Open Calendar</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
         </div>
       `;
     }
@@ -866,8 +962,8 @@ function renderDashboardContent() {
     kickTool.addEventListener('click', () => {
       appState.kickCount += 1;
       const label = document.getElementById('kickCountWebsiteLabel');
-      if (label) label.textContent = `${appState.kickCount} kicks recorded today 🎉`;
-      kickTool.style.transform = 'scale(0.97)';
+      if (label) label.textContent = `${appState.kickCount} kicks recorded today`;
+      kickTool.style.transform = 'scale(0.98)';
       setTimeout(() => kickTool.style.transform = '', 150);
     });
   }
@@ -877,8 +973,8 @@ function renderDashboardContent() {
     waterTool.addEventListener('click', () => {
       appState.waterCount = (appState.waterCount % 8) + 1;
       const label = document.getElementById('waterCountWebsiteLabel');
-      if (label) label.textContent = `${appState.waterCount} / 8 glasses logged 💧`;
-      waterTool.style.transform = 'scale(0.97)';
+      if (label) label.textContent = `${appState.waterCount} / 8 glasses logged`;
+      waterTool.style.transform = 'scale(0.98)';
       setTimeout(() => waterTool.style.transform = '', 150);
     });
   }

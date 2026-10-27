@@ -286,19 +286,35 @@
             onConfirm: () => {
               const patient = document.getElementById('visitPatient')?.value;
               const bp = document.getElementById('visitBP')?.value.trim();
+              const weight = document.getElementById('visitWeight')?.value.trim();
               const notes = document.getElementById('visitNotes')?.value.trim();
+              const hasHeadache = document.getElementById('dsSevereHeadache')?.checked;
               const hasBleed = document.getElementById('dsBleeding')?.checked;
               const hasEdema = document.getElementById('dsEdema')?.checked;
+              const hasFetalMove = document.getElementById('dsFetalMove')?.checked;
 
               offlineNotesQueue.unshift({
                 id: `NOTE-${Date.now().toString().slice(-4)}`,
                 patient: patient.split('(')[0].trim(),
                 time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                notes: notes || `Logged BP ${bp || '120/80'}. Danger signs: ${hasBleed || hasEdema ? 'FLAGGED' : 'None'}.`,
+                notes: notes || `Logged BP ${bp || '120/80'}. Danger signs: ${hasBleed || hasEdema || hasHeadache || hasFetalMove ? 'FLAGGED' : 'None'}.`,
                 synced: isOnline
               });
               renderFieldNotes();
               window.BellyBandLayout.showToast(`✅ Home visit logged for ${patient}.`);
+
+              // Non-blocking asynchronous background push to Hindsight AI memory system
+              asyncPushFieldVisitToHindsight({
+                patient,
+                bp,
+                weight,
+                notes,
+                hasHeadache,
+                hasBleed,
+                hasEdema,
+                hasFetalMove
+              });
+
               return true;
             }
           });
@@ -336,13 +352,105 @@
             `,
             confirmText: 'DISPATCH SOS & AMBULANCE',
             onConfirm: () => {
+              const patient = document.getElementById('referralPatientSelect')?.value;
+              const hospital = document.getElementById('referralHospital')?.value;
               window.BellyBandLayout.showToast('🚨 EMERGENCY REFERRAL DISPATCHED! Ambulance Unit-01 routed with GPS tracking.');
+
+              // Asynchronously push emergency triage to Hindsight memory
+              asyncPushEmergencyReferralToHindsight({ patient, hospital });
+
               return true;
             }
           });
         }
       });
     }
+  }
+
+  /**
+   * Asynchronously push field worker visit & symptom/vitals context to Hindsight AI memory.
+   * Completely non-blocking: errors or delays never disrupt UI flow or form submission.
+   */
+  function asyncPushFieldVisitToHindsight(data) {
+    try {
+      const symptoms = [];
+      if (data.hasHeadache) symptoms.push('Severe Persistent Headache / Blurred Vision');
+      if (data.hasBleed) symptoms.push('Vaginal Bleeding / Fluid Leakage');
+      if (data.hasEdema) symptoms.push('Severe Facial & Pedal Edema');
+      if (data.hasFetalMove) symptoms.push('Reduced Fetal Movement (<10 kicks/2h)');
+
+      const isHighRisk = symptoms.length > 0 || (data.bp && parseInt(data.bp, 10) >= 140);
+      const severity = isHighRisk ? 'warning' : 'info';
+      const patientClean = (data.patient || 'Rural Mother').split('(')[0].trim();
+
+      const payload = {
+        patient_id: 1, // Primary patient mapping for local relational integrity
+        alert_type: 'field_visit_vitals_symptoms',
+        severity: severity,
+        reading_value: `BP ${data.bp || '120/80'} mmHg${data.weight ? ', Wt ' + data.weight + ' kg' : ''}`,
+        description: `ASHA/ANM Home Visit for ${patientClean}. Symptoms/Danger Signs: [${symptoms.length > 0 ? symptoms.join(', ') : 'None'}]. Field Notes: ${data.notes || 'Routine checkup completed.'}`,
+        metadata: {
+          patient_name: patientClean,
+          patient_raw: data.patient,
+          bp: data.bp,
+          weight: data.weight,
+          danger_signs_flagged: symptoms,
+          source: 'community_field_worker_console',
+          logged_by: 'ASHA / ANM Health Worker',
+          recorded_at: new Date().toISOString()
+        }
+      };
+
+      const endpoint = (window.location.pathname.includes('/dashboards'))
+        ? '../../api/hindsight_service.php?action=log_sensor_alert'
+        : '/SPANDAN/api/hindsight_service.php?action=log_sensor_alert';
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(resData => {
+        if (resData && resData.success) {
+          console.log('[Hindsight Memory Bridge] Synced field visit context:', resData.hindsight_memory_id);
+        }
+      })
+      .catch(err => {
+        console.warn('[Hindsight Memory Bridge] Background sync deferred:', err.message);
+      });
+    } catch (e) {
+      console.warn('[Hindsight Memory Bridge] Error in dispatch:', e);
+    }
+  }
+
+  /**
+   * Asynchronously push emergency hospital referral alert to Hindsight AI memory.
+   */
+  function asyncPushEmergencyReferralToHindsight(data) {
+    try {
+      const endpoint = (window.location.pathname.includes('/dashboards'))
+        ? '../../api/hindsight_service.php?action=log_sensor_alert'
+        : '/SPANDAN/api/hindsight_service.php?action=log_sensor_alert';
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient_id: 1,
+          alert_type: 'emergency_tertiary_referral',
+          severity: 'critical',
+          reading_value: 'Priority 0 SOS Ambulance Dispatch',
+          description: `URGENT TERTIARY REFERRAL: ${data.patient} referred to ${data.hospital}. Health worker triggered GPS ambulance dispatch.`,
+          metadata: {
+            patient_raw: data.patient,
+            destination_hospital: data.hospital,
+            source: 'asha_emergency_referral',
+            dispatched_at: new Date().toISOString()
+          }
+        })
+      }).catch(err => console.warn('[Hindsight Sync Notice]', err));
+    } catch (e) {}
   }
 
   function quickCheck(id) {

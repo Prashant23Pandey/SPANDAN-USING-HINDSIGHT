@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BellyBand - Pregnancy, Motherhood & Family Companion</title>
   <meta name="description" content="Personalized website for pregnancy tracking, motherhood milestones, and family care companion.">
-  <link rel="stylesheet" href="styles.css?v=4.1">
+  <link rel="stylesheet" href="styles.css?v=6.0">
   <style>
     /* Critical layout guarantee for Step 4, Step 5 & Step 6 Dashboard */
     .section-hero-banner.date-hero-banner { background-color: #D6F5E8 !important; }
     .section-hero-banner.auth-hero-banner { background-color: #FFF2D6 !important; }
-    
+
     /* Dashboard Tab Panes */
     .dash-tab-pane {
       display: none !important;
@@ -18,7 +18,7 @@
     .dash-tab-pane.active {
       display: flex !important;
       flex-direction: column !important;
-      gap: 24px !important;
+      gap: 12px !important;
       animation: fadeInPane 0.25s ease-out !important;
     }
     @keyframes fadeInPane {
@@ -1371,50 +1371,100 @@
 
          ================================================================ -->
     <section class="onboarding-section" id="stepSection6">
+
+      <!-- Enterprise Clinical Header Bar -->
+      <div class="dash-platform-topbar">
+        <div class="platform-brand-info">
+          <div class="platform-logo-pulse">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M12 2a10 10 0 0 0-7.07 17.07A10 10 0 1 0 12 2zm0 18a8 8 0 1 1 5.66-13.66A8 8 0 0 1 12 20z"></path><path d="M12 6v6l4 2"></path></svg>
+          </div>
+          <div>
+            <div class="platform-app-title">SPANDAN <span>/ BELLYBAND CLINICAL</span></div>
+            <div class="platform-app-sub">Obstetric Health-Tech Monitoring &amp; EHR Suite</div>
+          </div>
+        </div>
+
+        <div class="platform-patient-bar">
+          <div class="patient-status-dot online"></div>
+          <span class="patient-tag-name">Active Patient: <strong>Prashant Pandey</strong></span>
+          <span class="patient-id-badge">ID: #PT-8821</span>
+          <span class="patient-risk-badge">Low Risk Antenatal</span>
+        </div>
+
+        <div class="platform-status-actions">
+          <div class="telemetry-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <span>BLE Live Telemetry: <strong>Connected</strong></span>
+          </div>
+          <div class="system-time-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Gestational Day 168</span>
+          </div>
+        </div>
+      </div>
+
       <div class="dashboard-site-layout">
         
         <!-- Sidebar Navigation -->
         <aside class="dashboard-sidebar">
           <div class="user-profile-badge" style="cursor: pointer;" title="Click to open Profile Settings" onclick="switchDashboardTab('profile'); return false;">
-            <div class="user-avatar-large" id="sidebarAvatar">🌸</div>
+            <div class="user-avatar-large" id="sidebarAvatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
             <div class="user-profile-info">
-              <h4 class="user-name">Sarah & David</h4>
+              <h4 class="user-name">Sarah &amp; David</h4>
               <span class="user-subtag" id="sidebarRolePill">Wife | Mother</span>
             </div>
           </div>
 
           <nav class="sidebar-menu" id="dashboardSidebarMenu">
             <a href="javascript:void(0)" class="sidebar-link active" data-tab="overview" onclick="switchDashboardTab('overview'); return false;">
-              <span class="link-icon">📊</span>
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+              </span>
               <span data-i18n="navOverview">Dashboard Overview</span>
             </a>
             <a href="javascript:void(0)" class="sidebar-link" data-tab="scans" onclick="switchDashboardTab('scans'); return false;">
-              <span class="link-icon">🩺</span>
-              <span data-i18n="navScans">Doctor Scans & Visits</span>
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg>
+              </span>
+              <span data-i18n="navScans">Doctor Scans &amp; Visits</span>
             </a>
             <a href="javascript:void(0)" class="sidebar-link" data-tab="nutrition" onclick="switchDashboardTab('nutrition'); return false;">
-              <span class="link-icon">🥗</span>
-              <span data-i18n="navNutrition">Nutrition & Meal Plans</span>
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+              </span>
+              <span data-i18n="navNutrition">Nutrition &amp; Meal Plans</span>
             </a>
             <a href="javascript:void(0)" class="sidebar-link" data-tab="fitness" onclick="switchDashboardTab('fitness'); return false;">
-              <span class="link-icon">🧘‍♀️</span>
-              <span data-i18n="navFitness">Prenatal Yoga & Fitness</span>
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"></circle><path d="M6.5 9a11.5 11.5 0 0 0 11 0"></path><path d="M12 12v9"></path><path d="M8 21h8"></path></svg>
+              </span>
+              <span data-i18n="navFitness">Prenatal Yoga &amp; Fitness</span>
             </a>
             <a href="javascript:void(0)" class="sidebar-link" data-tab="community" onclick="switchDashboardTab('community'); return false;">
-              <span class="link-icon">📖</span>
-              <span data-i18n="navCommunity">Community & Guides</span>
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </span>
+              <span data-i18n="navCommunity">Community &amp; Guides</span>
             </a>
             <a href="javascript:void(0)" class="sidebar-link" data-tab="settings" onclick="switchDashboardTab('settings'); return false;">
-              <span class="link-icon">🛡️</span>
-              <span data-i18n="navFamilySupport">Family & Support</span>
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+              </span>
+              <span data-i18n="navFamilySupport">Family &amp; Support</span>
             </a>
             <a href="javascript:void(0)" class="sidebar-link" data-tab="profile" onclick="switchDashboardTab('profile'); return false;">
-              <span class="link-icon">👤</span>
+              <span class="link-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              </span>
               <span data-i18n="navProfile">Profile Settings</span>
             </a>
-            <div style="margin-top: 14px; padding-top: 14px; border-top: 1px dashed #E2D9CF;">
-              <a href="admin_videos.php" class="sidebar-link" style="color: #E07A5F; font-weight: 700; background: #FFF5F2; border-radius: 12px;">
-                <span class="link-icon">🎬</span>
+            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #E2D9CF;">
+              <a href="admin_videos.php" class="sidebar-link" style="color: #E07A5F; font-weight: 700; background: #FFF5F2; border-radius: 8px;">
+                <span class="link-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                </span>
                 <span>Admin Video Portal</span>
               </a>
             </div>
@@ -1426,120 +1476,291 @@
 
           <!-- ================= TAB 1: OVERVIEW ================= -->
           <div class="dash-tab-pane active" id="pane-overview">
-            <!-- Dynamic Hero Tracker Card -->
-            <div class="dashboard-hero-card" id="dashHeroCard">
-              <div class="hero-card-grid">
-                <!-- Left Column: Progress Info -->
-                <div class="hero-progress-info">
-                  <div class="hero-badge-row">
-                    <span class="hero-pill-badge" id="dashHeroWeek">Week 24</span>
-                    <span class="hero-countdown" id="dashHeroCountdown">112 Days to Due Date</span>
+            
+            <!-- Unified Clinical EHR Workspace Board -->
+            <div class="clinical-ehr-canvas">
+              
+              <!-- SECTION 1: Patient Gestational Trajectory & Antenatal Telemetry -->
+              <section class="dashboard-hero-card clinical-hero-panel" id="dashHeroCard">
+                <div class="hero-card-grid">
+                  <!-- Left: Gestational Trajectory Info -->
+                  <div class="hero-progress-info">
+                    <div class="hero-badge-row">
+                      <span class="hero-pill-badge" id="dashHeroWeek">Week 24</span>
+                      <span class="hero-countdown" id="dashHeroCountdown">112 Days to Due Date</span>
+                      <span class="clinical-stage-tag">Trimester 2 (Active)</span>
+                    </div>
+                    <h2 class="hero-main-title" id="dashHeroHeading">Baby's Hearing &amp; Senses are Developing</h2>
+                    <p class="hero-body-text" id="dashHeroText">
+                      Your baby is about 30 cm long and can now hear your voice and heartbeat clearly. Singing, talking, or playing soft music is great for bonding!
+                    </p>
+                    <div class="timeline-bar-wrap">
+                      <div class="timeline-bar-fill" style="width: 60%;"></div>
+                    </div>
+                    <div class="timeline-labels">
+                      <span>Trimester 1 (W1-12)</span>
+                      <span class="active-trimester">Trimester 2 (W13-26)</span>
+                      <span>Trimester 3 (W27-40)</span>
+                    </div>
                   </div>
-                  <h2 class="hero-main-title" id="dashHeroHeading">Baby's Hearing &amp; Senses are Developing</h2>
-                  <p class="hero-body-text" id="dashHeroText">
-                    Your baby is about 30 cm long and can now hear your voice and heartbeat clearly. Singing, talking, or playing soft music is great for bonding!
+
+                  <!-- Right: Developmental Biometrics Widget -->
+                  <div class="hero-fruit-visual clinical-biometrics-card">
+                    <div class="fruit-circle">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      <span class="fruit-emoji" id="dashFruitEmoji" style="display: none;"></span>
+                    </div>
+                    <span class="fruit-title" id="dashFruitLabel">Size Comparison: Eggplant</span>
+                    <span class="fruit-weight" id="dashFruitStats">~600 grams • 30 cm</span>
+                    <span class="biometrics-concordance">Concordant with 24w Gestation</span>
+                  </div>
+                </div>
+
+                <!-- Integrated Antenatal Telemetry Strip -->
+                <div class="hero-vitals-strip">
+                  <div class="vitals-tile">
+                    <div class="vitals-tile-header">
+                      <span class="vitals-tile-label">Fetal Heart Rate</span>
+                      <span class="vitals-status-pill normal">Normal</span>
+                    </div>
+                    <div class="vitals-tile-val">142 <span class="vitals-unit">bpm</span></div>
+                    <div class="vitals-tile-sub">Baseline: 138–146 bpm</div>
+                  </div>
+
+                  <div class="vitals-tile">
+                    <div class="vitals-tile-header">
+                      <span class="vitals-tile-label">Maternal BP</span>
+                      <span class="vitals-status-pill normal">Optimal</span>
+                    </div>
+                    <div class="vitals-tile-val">118/76 <span class="vitals-unit">mmHg</span></div>
+                    <div class="vitals-tile-sub">Preeclampsia Index: Low Risk</div>
+                  </div>
+
+                  <div class="vitals-tile">
+                    <div class="vitals-tile-header">
+                      <span class="vitals-tile-label">Fundal Height</span>
+                      <span class="vitals-status-pill normal">Concordant</span>
+                    </div>
+                    <div class="vitals-tile-val">24 <span class="vitals-unit">cm</span></div>
+                    <div class="vitals-tile-sub">Matches 24w gestation curve</div>
+                  </div>
+
+                  <div class="vitals-tile">
+                    <div class="vitals-tile-header">
+                      <span class="vitals-tile-label">Hydration Volume</span>
+                      <span class="vitals-status-pill target">6/8 Glass</span>
+                    </div>
+                    <div class="vitals-tile-val">1.8 <span class="vitals-unit">L / 2.2L</span></div>
+                    <div class="vitals-tile-sub">Amniotic volume support</div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- SECTION 2: Daily Antenatal Telemetry & Quick-Logging Tools -->
+              <div class="dashboard-tools-grid clinical-tools-panel" id="dashToolsGrid">
+                <!-- Tool 1: Kick Counter -->
+                <div class="web-tool-card tool-kick" id="btnToolKick">
+                  <div class="tool-card-head">
+                    <div class="web-tool-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    </div>
+                    <span class="tool-status-badge active">Live Tracker</span>
+                  </div>
+                  <div class="tool-card-body">
+                    <h4>Kick Counter</h4>
+                    <p id="kickCountWebsiteLabel">4 kicks recorded today</p>
+                  </div>
+                  <button type="button" class="tool-quick-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span>Log Kick</span>
+                  </button>
+                </div>
+
+                <!-- Tool 2: Water Tracker -->
+                <div class="web-tool-card tool-water" id="btnToolWater">
+                  <div class="tool-card-head">
+                    <div class="web-tool-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                    </div>
+                    <span class="tool-status-badge hydration">Goal: 8 Glasses</span>
+                  </div>
+                  <div class="tool-card-body">
+                    <h4>Hydration Log</h4>
+                    <p id="waterCountWebsiteLabel">6 / 8 glasses logged</p>
+                  </div>
+                  <button type="button" class="tool-quick-action">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span>Add Glass (250ml)</span>
+                  </button>
+                </div>
+
+                <!-- Tool 3: Daily Symptoms -->
+                <div class="web-tool-card tool-symptom" id="btnOpenSymptoms">
+                  <div class="tool-card-head">
+                    <div class="web-tool-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="m9 14 2 2 4-4"></path></svg>
+                    </div>
+                    <span class="tool-status-badge logged">Logged Today</span>
+                  </div>
+                  <div class="tool-card-body">
+                    <h4>Daily Symptoms</h4>
+                    <p id="symptomStatusLabel">Mood: Energetic • Mild backache</p>
+                  </div>
+                  <button type="button" class="tool-quick-action action-secondary">
+                    <span>Review Journal</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </button>
+                </div>
+
+                <!-- Tool 4: Partner Sync -->
+                <div class="web-tool-card tool-partner" id="btnOpenPartnerSync">
+                  <div class="tool-card-head">
+                    <div class="web-tool-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <span class="tool-status-badge synced">Device Synced</span>
+                  </div>
+                  <div class="tool-card-body">
+                    <h4>Partner Connect</h4>
+                    <p>Synced with David's device</p>
+                  </div>
+                  <button type="button" class="tool-quick-action action-secondary">
+                    <span>Sync Shared Notes</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- SECTION 3: Clinical Guidance & Diagnostic Milestones -->
+              <div class="dash-two-col-grid clinical-two-col-panel">
+                <!-- Doctor's Guidance Card -->
+                <div class="dash-info-card card-tip clinical-guidance-card">
+                  <div class="card-title-icon-row">
+                    <div class="card-title-icon">
+                      <span class="icon-bubble">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg>
+                      </span>
+                      <div>
+                        <h4>Doctor's Guidance of the Day</h4>
+                        <span class="card-subtitle-tag">Daily Clinical Antenatal Advisory</span>
+                      </div>
+                    </div>
+                    <span class="clinical-order-id">RX-99214</span>
+                  </div>
+                  <p class="info-card-text" id="dashDoctorTip">
+                    Staying well hydrated helps maintain optimal amniotic fluid levels and reduces mild pregnancy fatigue. Aim for 8-10 glasses of water daily.
                   </p>
-                  <div class="timeline-bar-wrap">
-                    <div class="timeline-bar-fill" style="width: 60%;"></div>
-                  </div>
-                  <div class="timeline-labels">
-                    <span>Trimester 1</span>
-                    <span style="font-weight: 800; color: #E07A5F;">Trimester 2 (Now)</span>
-                    <span>Trimester 3</span>
+                  <div class="info-card-footer">
+                    <span class="clinical-verified-badge">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Verified by Dr. Ananya Sharma, MD (OB-GYN) • Lead Obstetrician
+                    </span>
                   </div>
                 </div>
 
-                <!-- Right Column: Fruit Comparison Visual Box -->
-                <div class="hero-fruit-visual">
-                  <div class="fruit-circle">
-                    <span class="fruit-emoji" id="dashFruitEmoji">🍆</span>
+                <!-- Upcoming Checklist Card -->
+                <div class="dash-info-card card-milestones clinical-milestones-card">
+                  <div class="card-title-icon-row">
+                    <div class="card-title-icon">
+                      <span class="icon-bubble milestone-bubble">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      </span>
+                      <div>
+                        <h4>Upcoming Care Milestones</h4>
+                        <span class="card-subtitle-tag">Antenatal Diagnostic Protocol (Trimester 2)</span>
+                      </div>
+                    </div>
+                    <span class="status-upcoming-badge">3 Scheduled</span>
                   </div>
-                  <span class="fruit-title" id="dashFruitLabel">Size of an Eggplant</span>
-                  <span class="fruit-weight" id="dashFruitStats">~600 grams • 30 cm</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Quick Action Tools Grid -->
-            <div class="dashboard-tools-grid" id="dashToolsGrid">
-              <!-- Tool 1: Kick Counter -->
-              <div class="web-tool-card tool-kick" id="btnToolKick">
-                <div>
-                  <div class="web-tool-icon">🦶</div>
-                  <h4>Kick Counter</h4>
-                  <p id="kickCountWebsiteLabel">4 kicks recorded today</p>
-                </div>
-                <span class="tool-quick-action">+ Tap to Log Kick</span>
-              </div>
-
-              <!-- Tool 2: Water Tracker -->
-              <div class="web-tool-card tool-water" id="btnToolWater">
-                <div>
-                  <div class="web-tool-icon">💧</div>
-                  <h4>Hydration Log</h4>
-                  <p id="waterCountWebsiteLabel">6 / 8 glasses logged</p>
-                </div>
-                <span class="tool-quick-action">+ Log Glass</span>
-              </div>
-
-              <!-- Tool 3: Daily Symptoms -->
-              <div class="web-tool-card tool-symptom" id="btnOpenSymptoms">
-                <div>
-                  <div class="web-tool-icon">📋</div>
-                  <h4>Daily Symptoms</h4>
-                  <p id="symptomStatusLabel">Mood: Energetic • Mild backache</p>
-                </div>
-                <span style="font-size: 11px; font-weight: 700; color: #B45309; margin-top: 8px;">View Journal →</span>
-              </div>
-
-              <!-- Tool 4: Partner Sync -->
-              <div class="web-tool-card tool-partner" id="btnOpenPartnerSync">
-                <div>
-                  <div class="web-tool-icon">💬</div>
-                  <h4>Partner Connect</h4>
-                  <p>Synced with David's device</p>
-                </div>
-                <span style="font-size: 11px; font-weight: 700; color: #6D28D9; margin-top: 8px;">Sync Shared Notes →</span>
-              </div>
-            </div>
-
-            <!-- Two Column Insights & Milestones -->
-            <div class="dash-two-col-grid">
-              <!-- Doctor's Tip Card -->
-              <div class="dash-info-card card-tip">
-                <div class="card-title-icon">
-                  <span class="icon-bubble">💡</span>
-                  <h4>Doctor's Guidance of the Day</h4>
-                </div>
-                <p class="info-card-text" id="dashDoctorTip">
-                  Staying well hydrated helps maintain optimal amniotic fluid levels and reduces mild pregnancy fatigue. Aim for 8-10 glasses of water daily.
-                </p>
-                <div class="info-card-footer">
-                  <span>Verified by Dr. Ananya Sharma, MD (OB-GYN)</span>
+                  <ul class="milestone-list" id="dashMilestoneList">
+                    <li>
+                      <span class="check-circle done">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:10px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <div class="milestone-text-wrap">
+                        <span class="milestone-name">Week 24 Glucose Screening Appointment</span>
+                        <span class="milestone-meta">OGTT Diagnostic Fasting Panel • Confirmed for Sat 10:30 AM</span>
+                      </div>
+                      <span class="milestone-badge-chip done">Completed</span>
+                    </li>
+                    <li>
+                      <span class="check-circle pending">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:10px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                      </span>
+                      <div class="milestone-text-wrap">
+                        <span class="milestone-name">Tetanus Toxoid (TT) Booster Dose</span>
+                        <span class="milestone-meta">Maternal Immunization Protocol • Due in 14 Days</span>
+                      </div>
+                      <span class="milestone-badge-chip scheduled">Due Week 26</span>
+                    </li>
+                    <li>
+                      <span class="check-circle pending">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:10px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                      </span>
+                      <div class="milestone-text-wrap">
+                        <span class="milestone-name">Anomaly Scan Follow-up Review</span>
+                        <span class="milestone-meta">Dr. Ananya Clinical Consultation</span>
+                      </div>
+                      <span class="milestone-badge-chip scheduled">Scheduled</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              <!-- Upcoming Checklist Card -->
-              <div class="dash-info-card card-milestones">
-                <div class="card-title-icon">
-                  <span class="icon-bubble">📅</span>
-                  <h4>Upcoming Care Milestones</h4>
+              <!-- SECTION 4: Clinical AI Longitudinal Memory & Synthesis Box -->
+              <div class="dash-info-card card-hindsight-memory clinical-ai-memory-panel">
+                <div class="card-title-icon-row">
+                  <div class="card-title-icon">
+                    <span class="icon-bubble ai-bubble">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="3" x2="12" y2="9"></line><line x1="12" y1="15" x2="12" y2="21"></line><line x1="3" y1="12" x2="9" y2="12"></line><line x1="15" y1="12" x2="21" y2="12"></line><circle cx="12" cy="3" r="1"></circle><circle cx="12" cy="21" r="1"></circle><circle cx="3" cy="12" r="1"></circle><circle cx="21" cy="12" r="1"></circle></svg>
+                    </span>
+                    <div>
+                      <h4 style="margin: 0; font-size: 13.5px; font-weight: 700; color: #0F172A;">AI Longitudinal Patient Memory &amp; Clinical Synthesis</h4>
+                      <span style="font-size: 11px; color: #64748B;">Hindsight Vector Memory Engine • Multi-Parameter Cross-Week Clinical Trajectory</span>
+                    </div>
+                  </div>
+                  <div class="memory-status-group">
+                    <span class="certified-memory-pill">
+                      <span class="pulse-dot"></span>
+                      <span>Hindsight Memory Active</span>
+                    </span>
+                    <span class="medical-badge-pill">Vector DB v2.4</span>
+                    <span class="memory-id-badge">ID: #HIN-8821</span>
+                  </div>
                 </div>
-                <ul class="milestone-list" id="dashMilestoneList">
-                  <li>
-                    <span class="check-circle">✓</span>
-                    <span>Week 24 Glucose Screening Appointment</span>
-                  </li>
-                  <li>
-                    <span class="check-circle pending">○</span>
-                    <span>Tetanus Toxoid (TT) Booster Dose</span>
-                  </li>
-                  <li>
-                    <span class="check-circle pending">○</span>
-                    <span>Anomaly Scan Follow-up Review</span>
-                  </li>
-                </ul>
+
+                <div class="memory-comparison-grid">
+                  <div class="memory-trajectory-box">
+                    <div class="trajectory-head">
+                      <span class="trajectory-badge before">Baseline Intake (Week 21)</span>
+                      <span class="trajectory-meta">Hospital Antenatal Intake</span>
+                    </div>
+                    <p class="trajectory-desc">Resting pulse elevated at 94 bpm with recurrent evening pedal edema (+1) and reported fatigue. Daily fluid intake under 1.2 L.</p>
+                  </div>
+                  <div class="trajectory-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                  <div class="memory-trajectory-box current">
+                    <div class="trajectory-head">
+                      <span class="trajectory-badge after">Current Clinical State (Week 24)</span>
+                      <span class="trajectory-meta">ASHA Community Care Visit Today</span>
+                    </div>
+                    <p class="trajectory-desc">Resting pulse stabilized to 82 bpm (-12 bpm). Pedal edema completely resolved following electrolyte hydration compliance (1.8 L avg).</p>
+                  </div>
+                </div>
+
+                <div class="info-card-footer" style="padding-top: 10px;">
+                  <span style="font-size: 11.5px; color: #64748B;">Clinical EHR Vector Synced today at 08:30 AM via Community Care module</span>
+                  <a href="dashboard/ai_memory_insights.php?patient_id=PT-8821" target="_blank" class="clinical-ehr-link-btn">
+                    <span>Open Physician's Longitudinal EHR View</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 13px; height: 13px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -1547,13 +1768,13 @@
           <div class="dash-tab-pane" id="pane-scans">
             <div class="module-banner">
               <div class="module-banner-text">
-                <span class="module-badge">🩺 Clinical Care & Ultrasound Portal</span>
+                <span class="module-badge">Clinical Care &amp; Ultrasound Portal</span>
                 <h2>Doctor Scans &amp; Clinical Visits</h2>
                 <p>Track your ultrasound milestones, bloodwork diagnostics, doctor prescriptions, and upcoming antenatal visits.</p>
               </div>
               <div class="module-banner-actions">
                 <button class="dash-primary-btn" onclick="openBookVisitModal()">+ Book New Visit</button>
-                <button class="dash-secondary-btn" onclick="openUploadScanModal()">📤 Upload Report</button>
+                <button class="dash-secondary-btn" onclick="openUploadScanModal()">Upload Report</button>
               </div>
             </div>
 
@@ -1561,7 +1782,9 @@
             <div class="appointment-highlight-card">
               <div class="appointment-card-header">
                 <div class="doc-avatar-wrap">
-                  <div class="doc-avatar">👩‍⚕️</div>
+                  <div class="doc-avatar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  </div>
                   <div>
                     <h4>Dr. Ananya Sharma, MD (OB-GYN)</h4>
                     <span class="doc-dept">Lead Obstetrician • Apex Maternal Care Clinic</span>
@@ -1576,11 +1799,11 @@
                 </div>
                 <div class="app-detail-item">
                   <span class="detail-label">Date &amp; Time</span>
-                  <span class="detail-val">🗓 Saturday, Aug 30, 2026 • 10:30 AM</span>
+                  <span class="detail-val">Saturday, Aug 30, 2026 • 10:30 AM</span>
                 </div>
                 <div class="app-detail-item">
                   <span class="detail-label">Location</span>
-                  <span class="detail-val">📍 Room 402, Apex Medical Centre (Floor 4)</span>
+                  <span class="detail-val">Room 402, Apex Medical Centre (Floor 4)</span>
                 </div>
                 <div class="app-detail-item">
                   <span class="detail-label">Pre-visit Checklist</span>
@@ -1588,8 +1811,8 @@
                 </div>
               </div>
               <div class="app-card-footer">
-                <button class="btn-sm-action" onclick="showToast('Appointment reminder synced with your calendar!')">📅 Add to Calendar</button>
-                <button class="btn-sm-action" onclick="showToast('Clinic address copied to maps!')">🗺 Get Directions</button>
+                <button class="btn-sm-action" onclick="showToast('Appointment reminder synced with your calendar!')">Add to Calendar</button>
+                <button class="btn-sm-action" onclick="showToast('Clinic address copied to maps!')">Get Directions</button>
                 <button class="btn-sm-action danger-link" onclick="openBookVisitModal()">Reschedule</button>
               </div>
             </div>
@@ -4300,6 +4523,30 @@
       }
       closeModal('modalDailySymptoms');
       showToast('✓ Symptoms & mood successfully recorded to your daily journal!');
+
+      // Asynchronously push symptom & mood context to Hindsight AI memory
+      try {
+        const checkedSyms = Array.from(document.querySelectorAll('#modalDailySymptoms input[name="sym"]:checked')).map(el => el.value);
+        const journalNotes = document.querySelector('#modalDailySymptoms textarea')?.value || '';
+        const payload = {
+          patient_id: 1, // Primary user Sarah Jenkins
+          interaction_type: 'symptom_journal',
+          content: 'Daily Maternal Journal: Mood: ' + mood + '. Symptoms reported: ' + (checkedSyms.length ? checkedSyms.join(', ') : 'None') + '. Notes: ' + (journalNotes || 'None'),
+          metadata: {
+            mood: mood,
+            symptoms: checkedSyms,
+            notes: journalNotes,
+            source: 'daily_symptom_logger'
+          }
+        };
+        fetch('api/hindsight_service.php?action=log_interaction', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(function(err) {
+          console.warn('[Hindsight Background Push Notice]', err);
+        });
+      } catch (err) {}
     };
 
     window.sendPartnerNote = function() {
